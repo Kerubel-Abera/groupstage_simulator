@@ -10,8 +10,8 @@ data class Team(
     @PrimaryKey(autoGenerate = false)
     val id: Int = 0,
     @ColumnInfo(name = "team_name")
-    val teamName: String = "Reset",
-    val rating: Int = 1,
+    var teamName: String,
+    var rating: Int,
     var played: Int = 0,
     var win: Int = 0,
     var draw: Int = 0,

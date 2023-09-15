@@ -21,9 +21,23 @@ class TeamsViewModel @Inject constructor(
     private val teamRepository: TeamRepository,
 ) : ViewModel() {
 
+    private val _startNavigation: MutableStateFlow<Boolean> = MutableStateFlow(false)
+    val startNavigation: StateFlow<Boolean> = _startNavigation
+
+    private val _allTeams = MutableStateFlow<List<Team>>(emptyList())
+    val allTeams: StateFlow<List<Team>> = _allTeams
+
     private fun addTeam(team: Team) {
         viewModelScope.launch {
             teamRepository.addTeam(team)
+        }
+    }
+
+    fun getAllTeams() {
+        viewModelScope.launch {
+            teamRepository.getAllTeams.collect {
+                _allTeams.value = it
+            }
         }
     }
 
@@ -88,12 +102,15 @@ class TeamsViewModel @Inject constructor(
                 difference = 0,
                 points = 0
             )
-            Log.i("CreateTeamsScreen", "ADDED TEAM ${team.teamName} on id ${team.id}")
             teams.add(team)
-            //addTeam(team = team)
             id++
         }
+        _startNavigation.value = true
         insertTeams(teams)
+    }
+
+    fun finishNavigation(){
+        _startNavigation.value = false
     }
 
     /**

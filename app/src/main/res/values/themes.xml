@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Theme.GroupstageSim" parent="android:Theme.Material.Light.NoActionBar">
-        <item name="android:background">#ff007EDD</item>
+    <style name="Theme.GroupstageSim" parent="android:Theme.Material.Light.NoActionBar.Fullscreen">
+        <item name="android:background">#ff000000</item>
     </style>
 
 </resources>

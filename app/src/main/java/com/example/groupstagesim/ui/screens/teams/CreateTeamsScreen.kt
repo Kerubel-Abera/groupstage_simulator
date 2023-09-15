@@ -13,6 +13,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -83,6 +84,18 @@ fun CreateTeams(
     snackbarHostState: SnackbarHostState,
     navigateToSimulateScreen: () -> Unit
 ) {
+
+    val startNavigating = teamsViewModel.startNavigation.collectAsState()
+    val allTeams = teamsViewModel.allTeams.collectAsState()
+
+    if (startNavigating.value){
+        teamsViewModel.getAllTeams()
+        if (allTeams.value.isNotEmpty() && !allTeams.value[0].teamName.contains(stringResource(R.string.placeholder_text))) {
+            navigateToSimulateScreen()
+            teamsViewModel.finishNavigation()
+        }
+    }
+
     BlurredBackgroundScreen(
         backgroundImageResId = R.drawable.background_stadium_image
     ) {
@@ -146,9 +159,7 @@ fun CreateTeams(
                             teamC.value to ratingC.intValue,
                             teamD.value to ratingD.intValue
                         )
-                        Log.i("CreateTeamsScreen", teamWithRatings.toString())
                         teamsViewModel.enterTeams(teamWithRatings)
-                        navigateToSimulateScreen()
                     }
                 })
             }

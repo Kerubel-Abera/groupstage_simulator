@@ -27,4 +27,5 @@
     <string name="filled_star">Filled Star</string>
     <string name="empty_star">Empty Star</string>
     <string name="results">RESULTS</string>
+    <string name="placeholder_text">Team A</string>
 </resources>
