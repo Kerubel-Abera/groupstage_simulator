@@ -3,7 +3,10 @@
 ## Overview
 
 The Groupstage App is a skill-testing Android application developed for GameBasics. It simulates matches and results for a group of four teams. This app serves as a showcase of my skills.
+
 [Download the app](https://www.mediafire.com/file/swloidcjzjnln1u/groupstage_sim.apk/file)
+
+[Figma Design](https://www.figma.com/file/4ogta7NBMfiUDgimoKx15s/OSM-simulator?type=design&node-id=0%3A1&mode=design&t=pPlELy1nXrS14JEp-1)
 
 ## Features
 
