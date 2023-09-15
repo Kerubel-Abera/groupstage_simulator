@@ -1,5 +1,6 @@
 package com.example.groupstagesim.navigation.destinations
 
+import androidx.activity.compose.BackHandler
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import com.example.groupstagesim.ui.screens.results.ResultsScreen
@@ -13,6 +14,9 @@ fun NavGraphBuilder.resultsComposable(
     composable(
         route = RESULTS_SCREEN
     ) {
+        BackHandler(true) {
+            // do nothing
+        }
         ResultsScreen(
             navigateToStartScreen = navigateToStartScreen,
             resultsViewModel = resultsViewModel
