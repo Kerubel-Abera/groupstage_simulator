@@ -10,6 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
 import com.example.groupstagesim.ui.theme.CORNERSHAPE_LARGE
@@ -43,7 +44,10 @@ fun CustomButton(
         Text(
             text = text,
             fontWeight = FontWeight.Bold,
-            fontSize = 36.sp
+            fontSize = 36.sp,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis,
+            softWrap = true
         )
     }
 }
